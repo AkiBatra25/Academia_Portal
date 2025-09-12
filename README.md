@@ -1,6 +1,6 @@
 
 
-This will build the following executables:
+This project uses the following executables:
 
 * `server/server`
 * `client/client`
@@ -45,11 +45,6 @@ make clean
 
 ---
 
-## 📜 License
-
-Specify your license here (e.g., MIT, GPL, etc.).
-
-```
 
 
 
