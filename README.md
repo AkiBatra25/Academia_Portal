@@ -130,24 +130,47 @@ Academia_Portal/
 └── README.md             # Main project documentation
 ```
 
-6. Operating Systems Concepts Used
-1. Multi-threading with pthreads
-Each client connection is handled by a separate thread.
+# 6. Operating Systems Concepts Used
 
-2. Inter-Process Communication – TCP Sockets
-Client and server communicate using socket calls (socket(), bind(), listen(), connect(), read(), write()).
+This project demonstrates multiple OS principles learned in the Operating Systems lab:
 
-3. File Management & Persistence
-Binary files store all users, courses, and enrollments.
+### 6.1 Multi-Threading (pthreads)
+- The server creates **one thread per client** using `pthread_create()`.
+- Each client connection is handled independently.
+- Demonstrates concurrency and thread-based parallelism.
 
-4. File Locking (fcntl)
-Used to avoid race conditions during simultaneous writes.
+### 6.2 Inter-Process Communication (TCP Sockets)
+- Client and server communicate using:
+  - `socket()`
+  - `bind()`
+  - `listen()`
+  - `accept()`
+  - `connect()`
+  - `read()` / `write()`
+- Shows real-world network programming and IPC mechanisms.
 
-5. Synchronization & Concurrency
-Ensures consistent enrollment counts and user data modification.
+### 6.3 File Management & Persistence
+- All users, courses, and enrollments are stored as **binary files**.
+- Demonstrates OS-level file handling:
+  - `fopen()`, `fread()`, `fwrite()`, `fseek()`, `ftell()`
 
-7. Software Engineering – Testing Summary
-Testing includes white-box, black-box, unit, module, integration, system testing, and explicit branch and path coverage.
+### 6.4 File Locking (fcntl)
+- Used to prevent race conditions when multiple clients update the same file.
+- Achieved using:
+  - `fcntl(fd, F_SETLKW, &lock)`
+- Ensures consistency of course seat counts and user records.
+
+### 6.5 Synchronization & Race Condition Prevention
+- Critical file operations (enroll, unenroll, update course, modify user) use write locks.
+- Prevents corrupted data from concurrent access.
+
+### 6.6 Server–Client Architecture
+- Continuous server loop handles multiple simultaneous connections.
+- Demonstrates concepts of:
+  - Blocking/non-blocking I/O  
+  - Process lifecycle  
+  - Resource sharing  
+
 
 7.1 Unit Testing (White-box)
 A C unit test (tests/test_authenticate.c) was created for authenticate().
@@ -239,4 +262,5 @@ All detailed test cases, tables, diagrams, and coverage explanations are availab
 👉 Testing.md
 
 This file is the complete SE Deliverable 3 testing report.
+
 
