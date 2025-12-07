@@ -79,18 +79,18 @@ From the project root directory:
 
 ### 4.1 Build the Server
 ```bash
-gcc -Iinclude -o server/server server/server.c server/common.c
+gcc -include -o server/server server/server.c server/common.c
 ```
 
 ### 4.2 Build the Client
 ```bash
-gcc -Iinclude -o client/client client/client.c
+gcc -include -o client/client client/client.c
 ```
 
 ### 4.3 (Optional) Initialize Sample Data
 This will create sample admin, faculty, student, and course entries.
 ```bash
-gcc -Iinclude -o init/init_data init/init_data.c
+gcc -include -o init/init_data init/init_data.c
 ./init/init_data
 ```
 
@@ -293,6 +293,7 @@ All detailed test cases, tables, diagrams, and coverage explanations are availab
 👉 Testing.md
 
 This file is the complete SE Deliverable 3 testing report.
+
 
 
 
