@@ -345,7 +345,7 @@ This step populates the system with sample Admin, Faculty, Student, and Course e
 gcc -Iinclude -o init/init_data init/init_data.c
 ./init/init_data
 
-##9.2 Run Demo Test Script (End-to-End System Test)
+## 9.2 Run Demo Test Script (End-to-End System Test)
 The automated demo script builds the project, initializes data, launches the server, and runs a sample client session.
 
 
@@ -353,7 +353,7 @@ chmod +x tests/run_demo_test.sh
 ./tests/run_demo_test.sh
 This script demonstrates a complete execution of the client–server workflow without manual input.
 
-##9.3 Running Black-Box Automated Test Scripts
+## 9.3 Running Black-Box Automated Test Scripts
 You must start the server manually first.
 
 Step 1 — Start the Server (Terminal 1)
@@ -402,7 +402,7 @@ Adding a new student
 
 Updated student list consistency
 
-##9.4 Unit Test for authenticate() (White-Box)
+## 9.4 Unit Test for authenticate() (White-Box)
 A dedicated unit test ensures branch and path coverage for the authentication logic.
 
 Compile Unit Test
@@ -421,7 +421,7 @@ Wrong role
 
 Valid Student login
 
-##9.5 Manual Tests (Remaining Menu Features)
+## 9.5 Manual Tests (Remaining Menu Features)
 Some menu options require human interaction.
 
 Steps for Manual Testing
@@ -460,5 +460,6 @@ enrollments.dat
 Detailed manual scenarios are documented in the “Manual Test Cases” section of this file.
 
 ---
+
 
 
