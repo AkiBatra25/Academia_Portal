@@ -331,53 +331,49 @@ Before running any test scripts, compile both the server and client.
 
 ### Build the Server
 
-```bash
+
 gcc -Iinclude -o Server/server Server/server.c Server/common.c
-Build the Client
-bash
-Copy code
+
+###Build the Client
+
 gcc -Iinclude -o Client/client Client/client.c
-(Optional) Initialize Sample Data
+
+### Initialize Sample Data
 This step populates the system with sample Admin, Faculty, Student, and Course entries.
 
-bash
-Copy code
+
 gcc -Iinclude -o init/init_data init/init_data.c
 ./init/init_data
-8.2 Run Demo Test Script (End-to-End System Test)
+
+##9.2 Run Demo Test Script (End-to-End System Test)
 The automated demo script builds the project, initializes data, launches the server, and runs a sample client session.
 
-bash
-Copy code
+
 chmod +x tests/run_demo_test.sh
 ./tests/run_demo_test.sh
 This script demonstrates a complete execution of the client–server workflow without manual input.
 
-8.3 Running Black-Box Automated Test Scripts
+##9.3 Running Black-Box Automated Test Scripts
 You must start the server manually first.
 
 Step 1 — Start the Server (Terminal 1)
-bash
-Copy code
+
 ./Server/server
 Expected output:
 
-nginx
-Copy code
+
 Server listening on port 8080...
 Step 2 — Run Tests (Terminal 2)
 Navigate to the project root and run any of the following automated scripts.
 
 (a) Invalid Login Test
-bash
-Copy code
+
 chmod +x tests/test_invalid_login.sh
 ./tests/test_invalid_login.sh
 This verifies that invalid credentials correctly produce an “Invalid credentials” message.
 
 (b) Student Enrollment + Unenrollment
-bash
-Copy code
+
 chmod +x tests/test_student_enroll_unenroll.sh
 ./tests/test_student_enroll_unenroll.sh
 This automated script performs:
@@ -395,8 +391,7 @@ Logging out
 It tests integration between student, course, and enrollment modules.
 
 (c) Admin Adds a New Student
-bash
-Copy code
+
 chmod +x tests/test_admin_add_student.sh
 ./tests/test_admin_add_student.sh
 This verifies:
@@ -407,16 +402,14 @@ Adding a new student
 
 Updated student list consistency
 
-8.4 Unit Test for authenticate() (White-Box)
+##9.4 Unit Test for authenticate() (White-Box)
 A dedicated unit test ensures branch and path coverage for the authentication logic.
 
 Compile Unit Test
-bash
-Copy code
+
 gcc -Iinclude -o tests/test_authenticate tests/test_authenticate.c Server/common.c
 Run Unit Test
-bash
-Copy code
+
 ./tests/test_authenticate
 The test prints PASS/FAIL for scenarios:
 
@@ -428,19 +421,17 @@ Wrong role
 
 Valid Student login
 
-8.5 Manual Tests (Remaining Menu Features)
+##9.5 Manual Tests (Remaining Menu Features)
 Some menu options require human interaction.
 
 Steps for Manual Testing
 Start the server:
 
-bash
-Copy code
+
 ./Server/server
 Start the client in another terminal:
 
-bash
-Copy code
+
 ./Client/client
 Log in as Admin, Faculty, or Student.
 
@@ -468,8 +459,6 @@ enrollments.dat
 
 Detailed manual scenarios are documented in the “Manual Test Cases” section of this file.
 
-yaml
-Copy code
-
 ---
+
 
