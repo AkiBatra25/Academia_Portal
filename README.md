@@ -172,95 +172,127 @@ This project demonstrates multiple OS principles learned in the Operating System
   - Resource sharing  
 
 
-7.1 Unit Testing (White-box)
-A C unit test (tests/test_authenticate.c) was created for authenticate().
+# 7. Software Engineering – Testing Summary
 
-Tested:
-Valid Admin credentials
+Testing was performed at multiple levels according to Software Engineering principles.  
+Both **white-box** and **black-box** testing methods were used, along with **branch coverage** and **path coverage** for key logic.
 
-Invalid Admin password
+---
 
-Wrong role (admin as student)
+### 7.1 Unit Testing (White-box)
 
-Valid Student login
+A unit test (`tests/test_authenticate.c`) was created for the `authenticate()` function.
 
-Coverage Achieved:
-Branch Coverage
+#### Tests include:
+- Valid Admin login  
+- Invalid password  
+- Wrong role (admin as student)  
+- Valid Student login  
 
-All true/false branches of key conditions executed.
+#### Coverage Achieved:
+- **Branch Coverage:**  
+  All true/false outcomes of important `if` conditions were executed.
 
-Path Coverage
+- **Path Coverage:**  
+  Major execution paths were covered:  
+  - Successful login  
+  - Wrong password  
+  - Wrong role  
+  - User not found  
 
-Successful login path
+---
 
-Wrong password path
+### 7.2 Module Testing
 
-Wrong role path
+Each functional module was tested independently:
 
-7.2 Module Testing
-Tested modules include:
+#### Admin Module
+- Add Student  
+- Add Faculty  
+- View Students / View Faculty  
+- Modify Student / Faculty  
+- Block / Activate Student  
 
-Admin module:
-Add student
+#### Student Module
+- View All Courses  
+- Enroll in Course  
+- Unenroll from Course  
+- View Enrolled Courses  
 
-View students
+#### Faculty Module
+- Add Course  
+- Remove Course  
+- Update Course Details  
+- View Offering Courses  
 
-Add faculty
+Some tests are automated, others manually validated.
 
-View faculty
+---
 
-Student module:
-View courses
+### 7.3 Integration Testing
 
-Enroll
+Scenarios tested:
 
-Unenroll
+- Admin adds a student → student can immediately log in.  
+- Faculty adds a course → student can view and enroll in it.  
+- Student enrollment updates:
+  - `enrollments.dat`  
+  - `courses.dat` seat count  
 
-View enrolled courses
+- Unenrollment removes the record and reduces seat count properly.
 
-Faculty module:
-Add course
+---
 
-View courses
+### 7.4 System Testing (Black-box)
 
-Update/remove course (manually tested)
+End-to-end tests covering complete workflows:
 
-7.3 Integration Testing
-Examples:
+- Admin login → perform operations → logout  
+- Student login → enroll/unenroll/view courses → logout  
+- Faculty login → add/update/remove courses → logout  
+- Invalid input handling  
+- Graceful exit from application  
 
-Admin adds a student → student can log in
+These tests verify the entire client–server system works correctly.
 
-Faculty adds a course → student can view and enroll
+---
 
-Enrollment correctly updates both courses.dat & enrollments.dat
+### 7.5 Automated Testing Scripts
 
-7.4 System Testing (Black-box)
-End-to-end workflows tested:
+Located in `/tests/`:
 
-Admin login → operations → logout
+- **test_invalid_login.sh** – Incorrect credentials test  
+- **test_student_enroll_unenroll.sh** – Student full workflow  
+- **test_admin_add_student.sh** – Admin adds and views a student  
+- **test_authenticate** – C unit test (white-box)
 
-Student login → enroll/unenroll → logout
+Automated tests act as black-box simulations of real user input.
 
-Faculty login → course operations
+---
 
-Invalid input handling
+### 7.6 Summary of Test Coverage
 
-Exit application gracefully
+| Testing Type | Status |
+|--------------|---------|
+| Unit Testing | ✔ Done |
+| Module Testing | ✔ Done |
+| Integration Testing | ✔ Done |
+| System Testing | ✔ Done |
+| Black-box Testing | ✔ Done |
+| White-box Testing | ✔ Done |
+| Branch Coverage | ✔ Achieved |
+| Path Coverage | ✔ Achieved |
 
-7.5 Automated Testing
-The /tests folder includes:
+Detailed test cases and outputs are included in **Testing.md**.
 
-Shell scripts that simulate client input
 
-Unit tests for core functions
 
-Semi-automated flows for Admin and Student modules
-
-8. Full Testing Report
+# 8. Full Testing Report
 All detailed test cases, tables, diagrams, and coverage explanations are available in:
 
 👉 Testing.md
 
 This file is the complete SE Deliverable 3 testing report.
+
 
 
