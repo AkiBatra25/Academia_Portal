@@ -114,6 +114,115 @@ You will see:
 3. Student Login
 4. Exit Application
 ```
+### 4.6 Run Automated & Manual Tests
+
+Testing for the Academia Portal includes automated shell scripts, a C unit test, and manual feature tests.
+
+#### 4.6.1 Run Demo Test Script (End-to-End System Test)
+
+This script builds the system, initializes sample data, launches the server, and performs a demo client interaction.
+```bash
+chmod +x tests/run_demo_test.sh
+./tests/run_demo_test.sh
+```
+#### 4.6.2 Running Black-Box Test Scripts
+
+Before running any script, start the server in Terminal 1:
+```bash
+./Server/server
+
+```
+You should see:
+
+Server listening on port 8080...
+
+
+Now open Terminal 2 and run any of the following tests.
+
+(a) Invalid Login Test
+```bash
+chmod +x tests/test_invalid_login.sh
+./tests/test_invalid_login.sh
+```
+
+Expected:
+
+Invalid credentials or role
+
+(b) Student Enrollment + Unenrollment Test
+
+```bash
+chmod +x tests/test_student_enroll_unenroll.sh
+./tests/test_student_enroll_unenroll.sh
+```
+
+This test automatically performs:
+
+login → view courses → enroll → view enrolled → unenroll → logout
+
+(c) Admin Add Student Test
+
+```bash
+chmod +x tests/test_admin_add_student.sh
+./tests/test_admin_add_student.sh
+
+```
+Expected:
+
+Student added successfully
+
+Updated student list displayed
+
+4.6.3 Run the Unit Test (White-Box Test on authenticate())
+
+Compile the unit test:
+```bash
+
+gcc -Iinclude -o tests/test_authenticate tests/test_authenticate.c Server/common.c
+```
+
+Run it:
+```bash
+./tests/test_authenticate
+```
+
+The test prints PASS/FAIL for:
+
+Valid Admin login
+
+Wrong password
+
+Wrong role
+
+Valid Student login
+
+#### 4.6.4 Manual Testing (Remaining Features)
+
+Some menus require human input.
+
+Start the server:
+```bash
+./Server/server
+
+```
+Start the client in another terminal:
+```bash
+./Client/client
+
+```
+Manually test features such as:
+
+Modify Student / Faculty Details
+
+Activate / Block Student
+
+Add / Update / Remove Course
+
+Verify that:
+
+Success/error messages appear correctly
+
+users.dat, courses.dat, and enrollments.dat are updated
 
 # 5. Folder Structure
 
@@ -293,6 +402,7 @@ All detailed test cases, tables, diagrams, and coverage explanations are availab
 👉 Testing.md
 
 This file is the complete SE Deliverable 3 testing report.
+
 
 
 
