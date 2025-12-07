@@ -77,37 +77,59 @@ Binary files stored in `/server/`:
 
 From the project root directory:
 
-### Build Server
+### 4.1 Build the Server
 ```bash
 gcc -Iinclude -o server/server server/server.c server/common.c
-Build Client
-bash
-Copy code
+```
+
+### 4.2 Build the Client
+```bash
 gcc -Iinclude -o client/client client/client.c
-(Optional) Initialize Sample Data
-bash
-Copy code
+```
+
+### 4.3 (Optional) Initialize Sample Data
+This will create sample admin, faculty, student, and course entries.
+```bash
 gcc -Iinclude -o init/init_data init/init_data.c
 ./init/init_data
-Run Server
-bash
-Copy code
-./server/server
-Run Client (in another terminal)
-bash
-Copy code
-./client/client
-5. Folder Structure
-makefile
-Copy code
-client/          # Client program (C, sockets)
-server/          # Server logic + operations
-include/         # Header files
-init/            # Initialization tool for sample data
-tests/           # Automated test scripts + unit test code
+```
 
-Testing.md       # Full SE testing report
-README.md        # This documentation
+### 4.4 Run the Server
+```bash
+./server/server
+```
+You should see:
+```
+Server listening on port 8080...
+```
+
+### 4.5 Run the Client (in another terminal)
+```bash
+./client/client
+```
+You will see:
+```
+1. Admin Login
+2. Faculty Login
+3. Student Login
+4. Exit Application
+```
+
+# 5. Folder Structure
+
+```
+Academia_Portal/
+│
+├── client/               # Client-side C program (menus, socket communication)
+├── server/               # Server-side code (authentication, menus, logic)
+├── include/              # Header files (structures, prototypes)
+├── init/                 # Initialization tool for creating sample data
+├── tests/                # Automated scripts + unit tests (SE Deliverable 3)
+│
+├── Testing.md            # Full Software Engineering testing report
+└── README.md             # Main project documentation
+```
+
 6. Operating Systems Concepts Used
 1. Multi-threading with pthreads
 Each client connection is handled by a separate thread.
@@ -217,3 +239,4 @@ All detailed test cases, tables, diagrams, and coverage explanations are availab
 👉 Testing.md
 
 This file is the complete SE Deliverable 3 testing report.
+
