@@ -79,7 +79,7 @@ From the project root directory:
 
 ### 4.1 Build the Server
 ```bash
-gcc -include -o Server/server Server/server.c Server/common.c
+gcc -Iinclude -o Server/server Server/server.c Server/common.c
 ```
 
 ### 4.2 Build the Client
@@ -402,6 +402,7 @@ All detailed test cases, tables, diagrams, and coverage explanations are availab
 👉 Testing.md
 
 This file is the complete SE Deliverable 3 testing report.
+
 
 
 
